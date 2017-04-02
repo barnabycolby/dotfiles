@@ -62,6 +62,7 @@ function create_symlinks {
 	careful_symlink ${gitconf_dir}/gitignore ~/.gitignore
 	careful_symlink ${DOTFILE_REPO}/vim ${vim_dir}
 	careful_symlink ${vim_dir}/vimrc ~/.vimrc
+	careful_symlink ${DOTFILE_REPO}/tmux.conf ~/.tmux.conf
 }
 
 # Performs other non symlink vim configuration
