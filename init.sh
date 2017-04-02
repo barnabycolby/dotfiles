@@ -2,6 +2,9 @@
 # This script installs the dotfiles and other config contained in this
 # repository. It should be run every time the repo is updated.
 
+# Exit on error
+set -e
+
 # Gets the directory that this file is contained in
 function get_script_directory {
 	bash_source="${BASH_SOURCE[0]}"
@@ -67,8 +70,21 @@ function vim_specific_config {
 	mkdir -p ${vim_dir}/_backup
 	mkdir -p ${vim_dir}/_swap
 	mkdir -p ${vim_dir}/_undo
+
+    # Install vim-plug if not already installed
+		plug_file="${DOTFILE_REPO}/vim/autoload/plug.vim"
+		if [ ! -f ${plug_file} ]; then
+            echo "Downloading vim-plug"
+            mkdir -p $(dirname ${plug_file})
+			wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ${plug_file}
+		fi
+
+    # Update the plugins
+    echo "Updating vim plugins"
+    vim -c 'PlugClean! | PlugUpgrade | PlugUpdate | qa'
 }
 
 DOTFILE_REPO="$(get_script_directory)"
 create_symlinks
 vim_specific_config
+echo "Successfully configured dotfiles"
