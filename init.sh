@@ -87,3 +87,4 @@ function vim_specific_config {
 DOTFILE_REPO="$(get_script_directory)"
 create_symlinks
 vim_specific_config
+echo "Successfully configured dotfiles"
