@@ -18,16 +18,47 @@ function get_script_directory {
 	echo "${dir}"
 }
 
+# Creates a symlink. If the symlink already exists and points to the target
+# location already, then nothing will be done. If the symlink already exists but
+# points to a different location, the user will be prompted as to whether to
+# replace the symlink.
+#
+# Arguments:
+# - The target
+# - The link name
+function careful_symlink {
+	target=${1}
+	link_name=${2}
+
+	if [ -L ${link_name} ]; then
+		if [ "$(readlink ${link_name})" == "${target}" ]; then
+          echo "${link_name} link already created"
+		  return
+		else
+            echo "${link_name} link exists but has a different target ${target}"
+			ln -is ${target} ${link_name}
+		fi
+	else
+		if [ -e ${link_name} ]; then
+            echo "${link_name} exists but is a file"
+			ln -is ${target} ${link_name}
+		else
+            echo "Creating ${link_name} link"
+			eval "ln --symbolic ${target} ${link_name}"
+		fi
+	fi
+}
+
 # Creates the symlinks required to install the config files
 function create_symlinks {
 	gitconf_dir=~/.gitconf
 	vim_dir=~/.vim
-	ln -is ${DOTFILE_REPO}/bashrc ~/.bashrc
-	ln -is ${DOTFILE_REPO}/gitconf ${gitconf_dir}
-	ln -is ${gitconf_dir}/gitconfig ~/.gitconfig
-	ln -is ${gitconf_dir}/gitignore ~/.gitignore
-	ln -is ${DOTFILE_REPO}/vim ${vim_dir}
-	ln -is ${vim_dir}/vimrc ~/.vimrc
+	careful_symlink ${DOTFILE_REPO}/bashrc ~/.bashrc
+	careful_symlink ${DOTFILE_REPO}/gitconf ${gitconf_dir}
+	careful_symlink ${gitconf_dir}/gitconfig ~/.gitconfig
+	careful_symlink ${gitconf_dir}/gitignore ~/.gitignore
+	careful_symlink ${DOTFILE_REPO}/vim ${vim_dir}
+	careful_symlink ${vim_dir}/vimrc ~/.vimrc
 }
 
 # Performs other non symlink vim configuration
