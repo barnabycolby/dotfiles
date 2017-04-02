@@ -1,0 +1,74 @@
+" Add plugins
+call plug#begin()
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+" Use backslash as utility prefix
+:nmap \l :setlocal number!<CR>
+:nmap \o :set paste!<CR>
+
+" Do not take into account line wrapping when moving around lines
+:nmap j gj
+:nmap k gk
+
+" Search settings, including highlight while typing, case insensitivity,
+" highlights of all found text and ability to clear the highlight
+:set incsearch
+:set ignorecase
+:set smartcase
+:set hlsearch
+:nmap \q :nohlsearch<CR>
+
+" Map :e# to Ctrl-E as it is so useful
+:nmap <C-e> :e#<CR>
+
+" Make buffer cycling easier
+:nmap <C-n> :bnext<CR>
+:nmap <C-p> :bprev<CR>
+
+" Sometimes vim needs a kick to recognise 256 colours
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+	set t_Co=256
+endif
+
+" Always show the statusline
+set laststatus=2
+
+" Mappings to help view other peoples code
+:nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+:nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+:nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+:nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+:nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+
+" By default, set the tabbing to 4 spaces
+set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" Allow lines to be moved up and down with arrow keys
+:nmap <Up> ddkP
+:nmap <Down> ddp
+
+" Add a comma to the end of a word (in normal mode) by pressing the comma key
+:nmap , ea,<Esc>
+
+" Add line numbers
+:set number
+:set relativenumber
+
+" You complete me config
+set completeopt=
+let g:ycm_global_ycm_extra_conf='~/.ycm_global_ycm_extra_conf'
+let g:ycm_confirm_extra_conf=0
+
+" Store swp, backup and undo files in a special directory, to stop them
+" getting in the way
+set dir=~/.vim/_swap//
+set backup
+set backupdir=~/.vim/_backup/,~/tmp,.
+set undofile
+set undodir=~/.vim/_undo/
