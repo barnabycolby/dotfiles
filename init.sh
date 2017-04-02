@@ -2,6 +2,9 @@
 # This script installs the dotfiles and other config contained in this
 # repository. It should be run every time the repo is updated.
 
+# Exit on error
+set -e
+
 # Gets the directory that this file is contained in
 function get_script_directory {
 	bash_source="${BASH_SOURCE[0]}"
