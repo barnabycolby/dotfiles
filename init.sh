@@ -18,7 +18,14 @@ function get_script_directory {
 	echo "${dir}"
 }
 
-DOTFILE_REPO="$(get_script_directory)"
+# Creates the symlinks required to install the config files
+function create_symlinks {
+	gitconf_dir=~/.gitconf
+	ln -is ${DOTFILE_REPO}/bashrc ~/.bashrc
+	ln -is ${DOTFILE_REPO}/gitconf ${gitconf_dir}
+	ln -is ${gitconf_dir}/gitconfig ~/.gitconfig
+	ln -is ${gitconf_dir}/gitignore ~/.gitignore
+}
 
-# Symlink the bash dotfile
-ln -is ${DOTFILE_REPO}/bashrc ~/.bashrc
+DOTFILE_REPO="$(get_script_directory)"
+create_symlinks
