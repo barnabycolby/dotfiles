@@ -1,0 +1,15 @@
+[push]
+	default = simple
+[user]
+	email = barnaby.colby@gmail.com
+	name = Barnaby Colby
+[alias]
+	st = status
+	co = checkout
+[core]
+	excludesfile = ~/.gitconf/gitignore
+	editor = vim
+[pager]
+    diff = ~/.gitconf/diff-highlight | less
+    log = ~/.gitconf/diff-highlight | less
+    show = ~/.gitconf/diff-highlight | less
