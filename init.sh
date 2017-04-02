@@ -21,11 +21,23 @@ function get_script_directory {
 # Creates the symlinks required to install the config files
 function create_symlinks {
 	gitconf_dir=~/.gitconf
+	vim_dir=~/.vim
 	ln -is ${DOTFILE_REPO}/bashrc ~/.bashrc
 	ln -is ${DOTFILE_REPO}/gitconf ${gitconf_dir}
 	ln -is ${gitconf_dir}/gitconfig ~/.gitconfig
 	ln -is ${gitconf_dir}/gitignore ~/.gitignore
+	ln -is ${DOTFILE_REPO}/vim ${vim_dir}
+	ln -is ${vim_dir}/vimrc ~/.vimrc
+}
+
+# Performs other non symlink vim configuration
+function vim_specific_config {
+	vim_dir=${DOTFILE_REPO}/vim
+	mkdir -p ${vim_dir}/_backup
+	mkdir -p ${vim_dir}/_swap
+	mkdir -p ${vim_dir}/_undo
 }
 
 DOTFILE_REPO="$(get_script_directory)"
 create_symlinks
+vim_specific_config
