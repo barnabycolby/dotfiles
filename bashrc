@@ -28,7 +28,9 @@ alias gp='git push'
 alias gs='git status'
 alias gu='git add -u'
 
+# Other aliases
 alias search='grep -rn . -e'
+alias vimr='vim -R'
 
 # Enable globstar (**)
 shopt -s globstar
