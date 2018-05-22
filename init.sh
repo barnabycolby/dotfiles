@@ -85,7 +85,13 @@ function vim_specific_config {
     vim -c 'PlugClean! | PlugUpgrade | PlugUpdate | qa'
 }
 
+function shell_theme_config {
+    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+}
+
 DOTFILE_REPO="$(get_script_directory)"
 create_symlinks
 vim_specific_config
+shell_theme_config
+source ~/.bashrc
 echo "Successfully configured dotfiles"
