@@ -55,3 +55,6 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+# Miscellaneous aliases
+alias vimr='vim -R'
