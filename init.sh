@@ -90,14 +90,39 @@ function shell_theme_config {
     if [ ! -d "${theme_dir}" ]; then
         echo "Installing shell theme"
         git clone https://github.com/chriskempson/base16-shell.git ${theme_dir}
-    else
-        echo "Skipping shell theme install, it's already done."
     fi
+}
+
+function fish_config {
+    # Install fish if it's not already installed.
+    fish_path="$(command -v fish)"
+    if [ -z "${fish_path}" ]; then
+        echo "Installing fish"
+        sudo pacman -S fish
+    fi
+
+    # Install oh-my-fish if it's not already installed.
+    omf_dir=~/.local/share/omf
+    if [ ! -d "${omf_dir}" ]; then
+        echo "Installing oh-my-fish"
+        download_path=/tmp/install
+        curl -L https://get.oh-my.fish > "${download_path}"
+        fish "${download_path}" --noninteractive
+        rm "${download_path}"
+    fi
+
+    # Install the agnoster theme that brings along a pretty PS1.
+    fish -c 'omf install agnoster'
+    fish -c 'omf theme agnoster'
+
+    # Setup the "bashrc" equivalent.
+	careful_symlink ${DOTFILE_REPO}/config.fish ~/.config/fish/config.fish
 }
 
 DOTFILE_REPO="$(get_script_directory)"
 create_symlinks
 vim_specific_config
 shell_theme_config
+fish_config
 source ~/.bashrc
 echo "Successfully configured dotfiles"
