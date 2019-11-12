@@ -86,7 +86,13 @@ function vim_specific_config {
 }
 
 function shell_theme_config {
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+    theme_dir=~/.config/base16-shell
+    if [ ! -d "${theme_dir}" ]; then
+        echo "Installing shell theme"
+        git clone https://github.com/chriskempson/base16-shell.git ${theme_dir}
+    else
+        echo "Skipping shell theme install, it's already done."
+    fi
 }
 
 DOTFILE_REPO="$(get_script_directory)"
