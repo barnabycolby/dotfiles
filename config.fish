@@ -15,3 +15,23 @@ function fish_right_prompt -d 'Prints right prompt'
   prompt_time
   set_color normal
 end
+
+# Git aliases
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gm='git merge'
+alias gp='git push'
+alias gs='git status'
+alias gu='git add -u'
+
+# Miscellaneous aliases
+alias vimr='vim -R'
+
+# Exit easily
+alias q='exit'
+
+# Copy and paste.
+alias c='xclip -selection clipboard'
