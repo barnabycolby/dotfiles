@@ -13,3 +13,5 @@
     diff = ~/.gitconf/diff-highlight | less
     log = ~/.gitconf/diff-highlight | less
     show = ~/.gitconf/diff-highlight | less
+[color]
+	ui = auto
