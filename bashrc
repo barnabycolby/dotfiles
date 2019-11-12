@@ -58,3 +58,23 @@ man() {
 
 # Miscellaneous aliases
 alias vimr='vim -R'
+
+# Exit easily
+alias q='exit'
+
+# Copy and paste.
+alias c='xclip -selection clipboard'
+
+NDK_PATH='~/Android/standalone-toolchains/current-arm/bin'
+PATH=${PATH}:~/.local/bin:${NDK_PATH}
+PATH=${PATH}:~/.gem/ruby/2.6.0/bin
+PATH=${PATH}:~/bin
+PATH=${PATH}:~/Android/sdk/platform-tools
+PATH=${PATH}:/usr/lib/jvm/java-11-openjdk/bin
+
+# Add custom python files to the python search path.
+if [ -z "${PYTHONPATH}" ]; then
+    export PYTHONPATH=~/Projects/PythonCrypto
+else
+    export PYTHONPATH=${PYTHONPATH}:~/Projects/PythonCrypto
+fi
