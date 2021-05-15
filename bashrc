@@ -65,6 +65,11 @@ alias q='exit'
 # Copy and paste.
 alias c='xclip -selection clipboard'
 
+# Build and run commands
+alias b='./build.sh'
+alias r='./run.sh'
+alias d='./debug.sh'
+
 NDK_PATH='~/Android/standalone-toolchains/current-arm/bin'
 PATH=${PATH}:~/.local/bin:${NDK_PATH}
 PATH=${PATH}:~/.gem/ruby/2.6.0/bin

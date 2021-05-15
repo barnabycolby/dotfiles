@@ -35,3 +35,15 @@ alias q='exit'
 
 # Copy and paste.
 alias c='xclip -selection clipboard'
+
+# Single letter aliases for running scripts with common names.
+alias b='./build.sh'
+alias r='./run.sh'
+alias d='./debug.sh'
+
+# Use vi mode.
+fish_vi_key_bindings
+
+function vimf
+    vimr (find . -name $argv)
+end
