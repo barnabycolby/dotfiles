@@ -72,3 +72,10 @@ set backup
 set backupdir=~/.vim/_backup/,~/tmp,.
 set undofile
 set undodir=~/.vim/_undo/
+
+set cursorline
+
+" Show trailing tabs and spaces at the end of the line.
+"set list
+"set showbreak=↪\ 
+"set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
