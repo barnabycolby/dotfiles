@@ -29,6 +29,9 @@ alias gu='git add -u'
 
 # Miscellaneous aliases
 alias vimr='vim -R'
+alias vimt='vim -R -t'
+
+alias t='tmux'
 
 # Exit easily
 alias q='exit'
@@ -46,6 +49,14 @@ fish_vi_key_bindings
 
 function vimf
     vimr (find . -name $argv)
+end
+
+function vimtp
+    vim -R -t (xclip -selection clipboard -out)
+end
+
+function rgp
+    rg (xclip -selection clipboard -out)
 end
 
 alias load_bash='bash --rcfile ~/dotfiles/shellrc'
