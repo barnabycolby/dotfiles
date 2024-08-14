@@ -5,6 +5,16 @@
 # Exit on error
 set -e
 
+function check_dependencies {
+    dependencies='which wget fish git curl vim'
+    for dependency in ${dependencies}; do
+        if ! command -v "${dependency}" &> /dev/null; then
+            echo "Please install ${dependency} first."
+            exit 1
+        fi
+    done
+}
+
 # Gets the directory that this file is contained in
 function get_script_directory {
 	bash_source="${BASH_SOURCE[0]}"
@@ -94,13 +104,6 @@ function shell_theme_config {
 }
 
 function fish_config {
-    # Install fish if it's not already installed.
-    fish_path="$(command -v fish)"
-    if [ -z "${fish_path}" ]; then
-        echo "Installing fish"
-        sudo pacman -S fish
-    fi
-
     # Install oh-my-fish if it's not already installed.
     omf_dir=~/.local/share/omf
     if [ ! -d "${omf_dir}" ]; then
@@ -120,6 +123,7 @@ function fish_config {
 }
 
 DOTFILE_REPO="$(get_script_directory)"
+check_dependencies
 create_symlinks
 vim_specific_config
 shell_theme_config
