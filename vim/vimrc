@@ -1,9 +1,9 @@
 " Add plugins
 call plug#begin()
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 call plug#end()
