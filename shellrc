@@ -11,18 +11,8 @@ shopt -s checkwinsize
 # Enable alias commands
 shopt -s expand_aliases
 
-# Git aliases
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gco='git checkout'
-alias gd='git diff'
-alias gm='git merge'
-alias gp='git push'
-alias gs='git status'
-alias gu='git add -u'
-
-alias search='grep -rn . -e'
+# Import common aliases.
+source ~/dotfiles/aliases
 
 # Enable globstar (**)
 shopt -s globstar
@@ -35,8 +25,6 @@ base16_paraiso
 PS1='[\u@\h \W]\$ '
 
 # Make commands more colourful.
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
@@ -45,7 +33,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
 export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-alias ls='ls --color=auto'
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
@@ -55,20 +42,6 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-
-# Miscellaneous aliases
-alias vimr='vim -R'
-
-# Exit easily
-alias q='exit'
-
-# Copy and paste.
-alias c='xclip -selection clipboard'
-
-# Build and run commands
-alias b='./build.sh'
-alias r='./run.sh'
-alias d='./debug.sh'
 
 NDK_PATH='~/Android/standalone-toolchains/current-arm/bin'
 PATH=${PATH}:~/.local/bin:${NDK_PATH}

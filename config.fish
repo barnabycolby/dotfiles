@@ -16,33 +16,8 @@ function fish_right_prompt -d 'Prints right prompt'
   set_color normal
 end
 
-# Git aliases
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gco='git checkout'
-alias gd='git diff'
-alias gm='git merge'
-alias gp='git push'
-alias gs='git status'
-alias gu='git add -u'
-
-# Miscellaneous aliases
-alias vimr='vim -R'
-alias vimt='vim -R -t'
-
-alias t='tmux'
-
-# Exit easily
-alias q='exit'
-
-# Copy and paste.
-alias c='xclip -selection clipboard'
-
-# Single letter aliases for running scripts with common names.
-alias b='./build.sh'
-alias r='./run.sh'
-alias d='./debug.sh'
+# Import common aliases.
+source ~/dotfiles/aliases
 
 # Use vi mode.
 fish_vi_key_bindings
