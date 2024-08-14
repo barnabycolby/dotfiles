@@ -47,3 +47,5 @@ fish_vi_key_bindings
 function vimf
     vimr (find . -name $argv)
 end
+
+alias load_bash='bash --rcfile ~/dotfiles/shellrc'
