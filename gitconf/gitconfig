@@ -15,3 +15,5 @@
     show = ~/.gitconf/diff-highlight | less
 [color]
 	ui = auto
+[init]
+	defaultBranch = main
