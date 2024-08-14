@@ -6,7 +6,7 @@
 set -e
 
 function check_dependencies {
-    dependencies='which wget fish git curl vim'
+    dependencies='which wget fish git curl vim python3'
     for dependency in ${dependencies}; do
         if ! command -v "${dependency}" &> /dev/null; then
             echo "Please install ${dependency} first."
